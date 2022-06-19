@@ -110,7 +110,7 @@ async def play(client, m: Message):
 
     else:
         if len(m.command) < 2:
-            await m.reply("ℜ𝔢𝔭𝔩𝔶 𝔱𝔬 𝔞𝔫 𝔞𝔲𝔡𝔦𝔬 𝔣𝔦𝔩𝔢 𝔬𝔯 𝔤𝔦𝔳𝔢 𝔰𝔬𝔪𝔢𝔱𝔥𝔦𝔫𝔤 𝔱𝔬 𝔰𝔢𝔞𝔯𝔠𝔥")
+            await m.reply("الرد على ملف صوتي أو إعطاء شيء للبحث")
         else:
             await m.delete()
             huehue = await m.reply("🔎 S𝔢𝔞𝔯𝔠𝔥𝔦𝔫𝔤 𝔡𝔢𝔞𝔯 ")
@@ -227,10 +227,18 @@ async def vplay(client, m: Message):
 
     else:
         if len(m.command) < 2:
-            await m.reply(                "**ℜ𝔢𝔭𝔩𝔶 𝔱𝔬 𝔞𝔫 𝔞𝔲𝔡𝔦𝔬 𝔣𝔦𝔩𝔢 𝔬𝔯 𝔤𝔦𝔳𝔢 𝔰𝔬𝔪𝔢𝔱𝔥𝔦𝔫𝔤 𝔱𝔬 𝔰𝔢𝔞𝔯𝔠𝔥**"            )
+            await m.reply(                "**الرد على ملف صوتي أو إعطاء شيء للبحث**"            )
         else:
             await m.delete()
             huehue = await m.reply("**🔎 S𝔢𝔞𝔯𝔠𝔥𝔦𝔫𝔤 𝔡𝔢𝔞𝔯 ")
+            query = m.text.split(None, 1)[1]
+            search = ytsearch(query)
+            Q = 720
+            hmmm = HighQualityVideo()
+            if search == 0:
+                await huehue.edit(                    "**𝔫𝔬𝔱𝔥𝔦𝔫𝔤 𝔴𝔞𝔰 𝔣𝔬𝔲𝔫𝔡**"                )
+            else:
+                songname = search[0]
                 url = search[1]
                 duration = search[2]
                 thumbnail = search[3]
@@ -266,11 +274,11 @@ async def vplay(client, m: Message):
                             await huehue.edit(f"`{ep}`")
 
 
-@Client.on_message(filters.command(["اغنية_عشوائية"], prefixes=f"{HNDLR}"))
+@Client.on_message(filters.command(["اغنيه عشوائية"], prefixes=f"{HNDLR}"))
 async def playfrom(client, m: Message):
     chat_id = m.chat.id
     if len(m.command) < 2:
-        await m.reply(            f"**𝔘𝔰𝔢 :** \n\n`{HNDLR}اغنية_عشوائية  [𝔑𝔢𝔵𝔱 𝔱𝔬 𝔱𝔥𝔢 𝔠𝔬𝔪𝔪𝔞𝔫𝔡, 𝔭𝔲𝔱 𝔱𝔥𝔢 𝔠𝔬𝔫𝔳𝔢𝔯𝔰𝔞𝔱𝔦𝔬𝔫 ℑ𝔇 𝔬𝔯 𝔠𝔬𝔫𝔳𝔢𝔯𝔰𝔞𝔱𝔦𝔬𝔫 𝔥𝔞𝔫𝔡𝔰]` \n"        )
+        await m.reply(            f"**استخدام :** \n\n`{HNDLR}اغنيه عشوائيه  [قم بوضع جانب الامر معرف المحادثه او ايدي المحادثه]` \n"        )
     else:
         args = m.text.split(maxsplit=1)[1]
         if ";" in args:
@@ -304,12 +312,12 @@ async def playfrom(client, m: Message):
 -🕷 𝔯𝔢𝔮 𝔣𝔯𝔬𝔪 -: {m.from_user.mention}**
 """,                    )
             await hmm.delete()
-            await m.reply(                f"➕ 𝔞𝔡𝔡 {lmt} 𝔴𝔞𝔦𝔱𝔦𝔫𝔤 𝔰𝔬𝔫𝔤 \n• 𝔰𝔢𝔫𝔡 {HNDLR}𝔄𝔲𝔱𝔬_𝔭𝔩𝔞𝔶 𝔱𝔬 𝔞𝔡𝔡 𝔞 𝔰𝔬𝔫𝔤 𝔱𝔬 𝔱𝔥𝔢 𝔴𝔞𝔦𝔱𝔦𝔫𝔤 𝔩𝔦𝔰𝔱**"            )
+            await m.reply(                f"➕ اضافه {lmt} أغنية في قائمة الانتظار \n• ارسل {HNDLR}التشغيل_التلقائي لاضاف اغنيه في القائمه الانتضار**"            )
         except Exception as e:
             await hmm.edit(f"**𝔗𝔥𝔢𝔯𝔢 𝔢𝔯𝔯𝔬𝔯 ** \n`{e}`")
 
 
-@Client.on_message(filters.command(["التشغيل_التلقائي", "queue"], prefixes=f"{HNDLR}"))
+@Client.on_message(filters.command(["التشغيل التلقائي", "queue"], prefixes=f"{HNDLR}"))
 async def playlist(client, m: Message):
     chat_id = m.chat.id
     if chat_id in QUEUE:
@@ -318,7 +326,7 @@ async def playlist(client, m: Message):
             await m.delete()
             await m.reply(                f"**🎧 𝔯𝔲𝔫𝔫𝔦𝔫𝔤 𝔫𝔬𝔴 :** \n[{chat_queue[0][0]}]({chat_queue[0][2]}) | `{chat_queue[0][3]}`",                disable_web_page_preview=True,            )
         else:
-            QUE = f"**🎧 𝔯𝔲𝔫𝔫𝔦𝔫𝔤 𝔫𝔬𝔴 :** \n[{chat_queue[0][0]}]({chat_queue[0][2]}) | `{chat_queue[0][3]}` \n\n**⏯ 𝔚𝔞𝔦𝔱𝔦𝔫𝔤 𝔩𝔦𝔰𝔱 :**"
+            QUE = f"**🎧 تشغيل الان :** \n[{chat_queue[0][0]}]({chat_queue[0][2]}) | `{chat_queue[0][3]}` \n\n**⏯ 𝔚𝔞𝔦𝔱𝔦𝔫𝔤 𝔩𝔦𝔰𝔱 :**"
             l = len(chat_queue)
             for x in range(1, l):
                 hmm = chat_queue[x][0]
@@ -340,7 +348,7 @@ async def skip(client, m: Message):
         elif op == 1:
             await m.reply("𝔈𝔪𝔭𝔱𝔶 𝔮𝔲𝔢𝔲𝔢, 𝔩𝔢𝔞𝔳𝔢 𝔳𝔬𝔦𝔠𝔢 𝔠𝔥𝔞𝔱**")
         else:
-            await m.reply(                f"**⏭ 𝔰𝔨𝔦𝔭 𝔭𝔩𝔞𝔶𝔟𝔞𝔠𝔨 ** \n**🎧 𝔭𝔩𝔞𝔶𝔦𝔫𝔤 𝔫𝔬𝔴** - [{op[0]}]({op[1]}) | `{op[2]}`",                disable_web_page_preview=True,            )
+            await m.reply(                f"**⏭ تخطي التشغيل ** \n**🎧 التشغيل الان** - [{op[0]}]({op[1]}) | `{op[2]}`",                disable_web_page_preview=True,            )
     else:
         skip = m.text.split(None, 1)[1]
         OP = "**🗑️ 𝔗𝔥𝔢 𝔣𝔬𝔩𝔩𝔬𝔴𝔦𝔫𝔤 𝔰𝔬𝔫𝔤𝔰 𝔥𝔞𝔳𝔢 𝔟𝔢𝔢𝔫 𝔯𝔢𝔪𝔬𝔳𝔢𝔡 𝔣𝔯𝔬𝔪 𝔱𝔥𝔢 𝔮𝔲𝔢𝔲𝔢 : -**"
@@ -381,7 +389,7 @@ async def pause(client, m: Message):
     if chat_id in QUEUE:
         try:
             await call_py.pause_stream(chat_id)
-            await m.reply(                f"**⏸ 𝔭𝔩𝔞𝔶𝔟𝔞𝔠𝔨 𝔭𝔞𝔲𝔰𝔢𝔡.**\n\n• 𝔶𝔬𝔲 𝔠𝔞𝔫 𝔯𝔢𝔰𝔱𝔞𝔯𝔱 𝔭𝔩𝔞𝔶𝔟𝔞𝔠𝔨 𝔟𝔶 𝔰𝔢𝔫𝔡𝔦𝔫𝔤 𝔞 𝔠𝔬𝔪𝔪𝔞𝔫𝔡  » `{HNDLR}ايقاف_الاستئناف`"            )
+            await m.reply(                f"**⏸ تم إيقاف التشغيل مؤقتًا.**\n\n• يمكنك ارجاع التشغيل بواسطه ارسال امر  » `{HNDLR}ايقاف_الاستئناف`"            )
         except Exception as e:
             await m.reply(f"**𝔗𝔥𝔢𝔯𝔢 𝔢𝔯𝔯𝔬𝔯 ** \n`{e}`")
     else:

@@ -21,16 +21,16 @@ async def _human_time_duration(seconds):
 @Client.on_message(    filters.user(SUDO_USERS) & filters.command(["ريستارت"], prefixes=f"{HNDLR}"))
 async def restart(client, m: Message):
     await m.delete()
-    loli = await m.reply("１")
-    await loli.edit("２")
-    await loli.edit("３")
-    await loli.edit("４")
-    await loli.edit("５")
-    await loli.edit("６")
-    await loli.edit("７")
-    await loli.edit("８")
-    await loli.edit("９")
-    await loli.edit("**１０＝ ℜ𝔢𝔟𝔬𝔬𝔱𝔢𝔡 **")
+    loli = await m.reply("1")
+    await loli.edit("2")
+    await loli.edit("3")
+    await loli.edit("4")
+    await loli.edit("5")
+    await loli.edit("6")
+    await loli.edit("7")
+    await loli.edit("8")
+    await loli.edit("9")
+    await loli.edit("**🔥 ℜ𝔢𝔟𝔬𝔬𝔱𝔢𝔡 **")
     os.execl(sys.executable, sys.executable, *sys.argv)
     quit()
 @Client.on_message(filters.command(["الأوامر"], prefixes=f"{HNDLR}"))
@@ -41,6 +41,7 @@ async def help(client, m: Message):
 - 𝟫𝟫𝟫 ∞ - 𝔗𝔥𝔢 𝔰𝔦𝔱𝔲𝔞𝔱𝔦𝔬𝔫 𝔦𝔰 𝔳𝔢𝔯𝔶 𝔰𝔱𝔯𝔞𝔫𝔤𝔢 ..
 ᴢᴏxᴏʟᴏᴠᴇʏᴏ 🌚🔥
 ——————×—————
+
 🕷 -| لتشغيل صوتية في المكالمة أرسل ⇦ [ `{HNDLR}تشغيل  + اسم الاغنية` ]
 🕷 -| لتشغيل فيديو في المكالمة  ⇦ [ `{HNDLR}تشغيل_فيديو  + اسم الاغنية` ]
 ———————×———————
@@ -53,11 +54,11 @@ async def help(client, m: Message):
 🕷 -| لتحميل صوتية أرسل ⇦ [ `{HNDLR}تحميل + اسم الاغنية او الرابط` ]
 🕷 -| لتحميل فيديو  ⇦  [ `{HNDLR}تحميل_فيديو + اسم الاغنية او الرابط` ]
 ———————×———————
+
 🕷 -| لأعاده تشغيل التنصيب أرسل ⇦  [ `{HNDLR}ريستارت` ]
 ———————×———————
-
-🛠 -| ＺｏｘｏＬｏｖｅｙｏ= 𝖙𝖍𝖊 𝖌𝖔𝖉
-⭐ -| :)
+🛠 -| ZoxoLoveyo
+⭐ -| @ZOXOANGEL"""
     await m.reply(HELP)
 @Client.on_message(filters.command(["الريبو"], prefixes=f"{HNDLR}"))
 async def repo(client, m: Message):
